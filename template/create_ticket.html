@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Ticket - QuickDesk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #45a049;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>📝 Create a New Ticket</h1>
+    <form method="POST">
+        <label>Subject:</label>
+        <input type="text" name="subject" required>
+
+        <label>Description:</label>
+        <textarea name="description" required></textarea>
+
+        <label>Category:</label>
+        <select name="category" required>
+            {% for cat in categories %}
+                <option value="{{cat}}">{{cat}}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Create Ticket">
+    </form>
+
+    <a href="/">⬅ Back to Dashboard</a>
+</body>
+</html>
