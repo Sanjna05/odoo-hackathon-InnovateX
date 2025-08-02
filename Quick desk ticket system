@@ -36,7 +36,7 @@ def register():
     password = input("Enter password: ")
     role = input("Enter role (admin/agent/user): ").lower()
     users.append(User(username, password, role))
-    print("✅ User registered successfully!\n")
+    print(" User registered successfully!\n")
 
 def login():
     global current_user
@@ -45,9 +45,9 @@ def login():
     for u in users:
         if u.username == username and u.password == password:
             current_user = u
-            print(f"✅ Logged in as {u.username} ({u.role})\n")
+            print(f" Logged in as {u.username} ({u.role})\n")
             return True
-    print("❌ Invalid credentials!\n")
+    print(" Invalid credentials!\n")
     return False
 
 def create_ticket():
@@ -58,7 +58,7 @@ def create_ticket():
     ticket_id = len(tickets) + 1
     ticket = Ticket(ticket_id, current_user.username, subject, description, category)
     tickets.append(ticket)
-    print(f"✅ Ticket #{ticket_id} created!\n")
+    print(f" Ticket #{ticket_id} created!\n")
 
 def view_my_tickets():
     found = False
@@ -66,7 +66,7 @@ def view_my_tickets():
         if t.user == current_user.username:
             found = True
             print(f"[#{t.ticket_id}] {t.subject} - {t.status} ({t.category}) "
-                  f"Replies: {len(t.replies)} 👍{t.upvotes} 👎{t.downvotes}")
+                  f"Replies: {len(t.replies)} {t.upvotes} {t.downvotes}")
     if not found:
         print("No tickets found!\n")
 
@@ -87,18 +87,18 @@ def upvote_ticket():
     for t in tickets:
         if t.ticket_id == ticket_id:
             t.upvotes += 1
-            print("👍 Ticket upvoted!\n")
+            print(" Ticket upvoted!\n")
             return
-    print("❌ Ticket not found!\n")
+    print(" Ticket not found!\n")
 
 def downvote_ticket():
     ticket_id = int(input("Enter ticket ID to downvote: "))
     for t in tickets:
         if t.ticket_id == ticket_id:
             t.downvotes += 1
-            print("👎 Ticket downvoted!\n")
+            print(" Ticket downvoted!\n")
             return
-    print("❌ Ticket not found!\n")
+    print(" Ticket not found!\n")
 
 def agent_dashboard():
     for t in tickets:
@@ -113,7 +113,7 @@ def agent_dashboard():
             t.add_reply(f"{current_user.username}: {reply}")
             print("✅ Ticket updated!\n")
             return
-    print("❌ Ticket not found!\n")
+    print(" Ticket not found!\n")
 
 def admin_dashboard():
     print("1. Create category\n2. View users\n")
