@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QuickDesk - Ticket Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎫 QuickDesk - Ticket Dashboard</h1>
+
+    <a href="/create_ticket">➕ Create Ticket</a>
+
+    <h2>📋 All Tickets</h2>
+    {% if tickets %}
+        <ul>
+            {% for ticket in tickets %}
+                <li>
+                    <strong>#{{ticket.id}} - {{ticket.subject}}</strong><br>
+                    Category: {{ticket.category}}<br>
+                    Status: {{ticket.status}}<br>
+                    Created: {{ticket.created_at}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tickets yet.</p>
+    {% endif %}
+</body>
+</html>
